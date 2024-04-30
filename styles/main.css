@@ -3,13 +3,14 @@
 }
 
 html{
-    font-family:sans-serif;
+    font-family:'Abel',sans-serif;
 }
+
 body{
     margin:0;
-    padding:0;
     background-color:rgb(75, 72, 72);
     color:white;
+    text-align: center;
 }
 
 header{
@@ -51,4 +52,51 @@ header ul a:hover{
 main{
     width:90%;
     max-width:50rem;
+    margin:0 auto;
+    padding:1rem 0;
+}
+
+main h1{
+    margin:2rem 0;
+    padding: 2rem 0;
+}
+
+
+form{
+    width: 90%;
+    border:2px solid teal;
+    border-radius:5px;
+    max-width: 25rem;
+    margin:2rem auto;
+    text-align: center;
+}
+
+input{
+    font:inherit;
+    border-radius: 5px;
+    width:90%;
+    padding: 0.5rem;
+}
+
+label{
+    display:block;
+}
+
+.form-control{
+    margin:1rem 0;
+    padding:0.5rem 0;
+}
+
+.btn{
+    font:inherit;
+    cursor:cell;
+    margin:0.5rem 0.5rem;
+    padding:1rem 1rem;
+    border-radius: 5px;
+
+}
+
+.btn:hover{
+    background-color:aquamarine;
+
 }
