@@ -12,4 +12,6 @@ async function loadContacts() {
     alert("Something went wrong");
     return;
   }
+
+  const responseData = response.json();
 }
