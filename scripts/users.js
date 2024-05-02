@@ -29,6 +29,7 @@ async function signUp(event) {
 
   const responseData = await response.json();
   console.log(responseData);
+  window.location.href = "http://localhost:5500/index.html";
 }
 
 signupFormElement.addEventListener("submit", signUp);
