@@ -26,6 +26,7 @@ async function login(event) {
     alert("Something Went Wrong");
     return;
   }
+  window.location.href = "http://localhost:5500/views/current.html";
 }
 
 signupFormElemnt.addEventListener("submit", login);

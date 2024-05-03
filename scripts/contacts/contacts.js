@@ -16,3 +16,5 @@ async function loadContacts() {
   const responseData = response.json();
   console.log(responseData);
 }
+
+loadContacts();
