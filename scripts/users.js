@@ -1,4 +1,5 @@
-const signupFormElement = document.querySelector("#login form");
+const signupFormElement = document.querySelector("#signup form");
+const loginFormElement = document.querySelector("#login form");
 
 async function signUp(event) {
   event.preventDefault();
@@ -60,4 +61,8 @@ async function login(event) {
   }
 }
 
-signupFormElement.addEventListener("submit", signUp);
+//events
+
+// signupFormElement.addEventListener("submit", signUp);
+
+loginFormElement.addEventListener("submit", login);
