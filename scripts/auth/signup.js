@@ -13,7 +13,7 @@ async function signUp(event) {
     response = await fetch("http://localhost:5001/api/users/register", {
       method: "POST",
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(userData),
     });

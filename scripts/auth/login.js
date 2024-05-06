@@ -23,7 +23,7 @@ async function login(event) {
   }
 
   if (!response.ok) {
-    alert("Something Went Wrong");
+    alert("Something Went Wrong no response");
     return;
   }
   window.location.href = "http://localhost:5500/views/current.html";
