@@ -1,3 +1,5 @@
+const currentUserElement = document.getElementById("current-user");
+
 async function getCurrent() {
   const token = localStorage.getItem("token");
   let response;
@@ -19,6 +21,10 @@ async function getCurrent() {
   } else {
     const userData = await response.json();
     console.log("Current User Data:", userData);
+
+    //updating username
+    currentUserElement.textContent = userData.username;
   }
 }
+
 getCurrent();

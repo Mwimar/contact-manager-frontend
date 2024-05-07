@@ -7,28 +7,6 @@
     <script src="../scripts/auth/current.js" defer></script>
     <!-- <script src="../scripts/contacts/contacts.js" defer></script> -->
     <title>Current User</title>
-    <!-- <script>
-      document.addEventListener("DOMContentLoaded", async function () {
-        let response;
-        try {
-          response = await fetch("http://localhost:5001/api/users/current");
-          console.log("fetched current successfully");
-        } catch (error) {
-          alert("Could not fetch user");
-          return;
-        }
-
-        if (!response.ok) {
-          alert("NO response");
-          return;
-        }
-        console.log("The DOM is ready!");
-
-        // Access and manipulate DOM elements
-        const element = document.getElementById("current-user");
-        element.textContent = "DOM content is loaded";
-      });
-    </script> -->
   </head>
   <body>
     <header id="main-header">
@@ -39,6 +17,6 @@
         </ul>
       </nav>
     </header>
-    <h1 id="current-user">Current User</h1>
+    <h1>Welcome! <span id="current-user">Current User</span></h1>
   </body>
 </html>
