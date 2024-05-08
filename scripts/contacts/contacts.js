@@ -1,7 +1,4 @@
-const emailElement = document.getElementById("email");
-const nameElement = document.getElementById("name");
-const phoneElement = document.getElementById("phone");
-
+const contactListElement = document.querySelector("#contact-list");
 async function loadContacts() {
   const token = localStorage.getItem("token");
 
@@ -40,6 +37,17 @@ async function loadContacts() {
   }
 }
 
-function createContactListItem(contactemail, contactName, contactPhone) {}
+function createContactListItem(contactEmail, contactName, contactPhone) {
+  const newContactListElement = document.createElement("li");
+
+  const contactEmailElement = document.createElement("h3");
+  contactEmailElement.textContent = contactEmail;
+
+  const contactNameElement = document.createElement("h4");
+  contactNameElement.textContent = contactName;
+
+  const contactPhoneElement = document.createElement("h5");
+  contactPhoneElement.textContent = contactPhone;
+}
 
 loadContacts();
