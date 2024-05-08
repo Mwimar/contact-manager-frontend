@@ -1,0 +1,10 @@
+ul{
+    list-style: none;
+}
+#all-contacts{
+    max-width: 30rem;
+    background-color: rgb(159, 218, 198);
+    margin:1rem auto;
+    padding:1rem 1rem;
+    border-radius:6px;
+}

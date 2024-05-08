@@ -1,3 +1,7 @@
+const emailElement = document.getElementById("email");
+const nameElement = document.getElementById("name");
+const phoneElement = document.getElementById("phone");
+
 async function loadContacts() {
   const token = localStorage.getItem("token");
 
@@ -24,9 +28,18 @@ async function loadContacts() {
   try {
     const responseData = await response.json();
     console.log(responseData);
+    const contacts = responseData;
+
+    for (const contact of contacts) {
+      emailElement.textContent = contact.email;
+      nameElement.textContent = contact.name;
+      phoneElement.textContent = contact.phone;
+    }
   } catch (error) {
     console.log("Error Parsing JSON");
   }
 }
+
+function createContactListItem(contactemail, contactName, contactPhone) {}
 
 loadContacts();
