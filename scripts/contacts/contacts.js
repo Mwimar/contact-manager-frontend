@@ -1,4 +1,4 @@
-const contactListElement = document.querySelector("#contact-list");
+const contactList = document.querySelector("#contact-list");
 async function loadContacts() {
   const token = localStorage.getItem("token");
 
@@ -51,7 +51,7 @@ function createContactListItem(contactEmail, contactName, contactPhone) {
   newContactListElement.appendChild(contactNameElement);
   newContactListElement.appendChild(contactPhoneElement);
 
-  newContactListElement.appendChild(newContactListElement);
+  contactList.appendChild(newContactListElement);
 }
 
 loadContacts();

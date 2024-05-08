@@ -3,8 +3,14 @@ ul{
 }
 #all-contacts{
     max-width: 30rem;
-    background-color: rgb(159, 218, 198);
     margin:1rem auto;
     padding:1rem 1rem;
     border-radius:6px;
+}
+
+#all-contacts ul li{
+    background-color: rgb(159, 218, 198);
+    margin:1rem 0;
+    padding:1.5rem;
+    border-radius:4px;
 }
