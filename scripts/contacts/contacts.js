@@ -28,9 +28,7 @@ async function loadContacts() {
     const contacts = responseData;
 
     for (const contact of contacts) {
-      emailElement.textContent = contact.email;
-      nameElement.textContent = contact.name;
-      phoneElement.textContent = contact.phone;
+      createContactListItem(contact.email, contact.name, contact.phone);
     }
   } catch (error) {
     console.log("Error Parsing JSON");
