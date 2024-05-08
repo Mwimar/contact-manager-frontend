@@ -48,6 +48,12 @@ function createContactListItem(contactEmail, contactName, contactPhone) {
 
   const contactPhoneElement = document.createElement("h5");
   contactPhoneElement.textContent = contactPhone;
+
+  newContactListElement.appendChild(contactEmailElement);
+  newContactListElement.appendChild(contactNameElement);
+  newContactListElement.appendChild(contactPhoneElement);
+
+  newContactListElement.appendChild(newContactListElement);
 }
 
 loadContacts();
