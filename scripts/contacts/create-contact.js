@@ -28,6 +28,8 @@ async function addContact(event) {
     return;
   }
 
+  contactData.user_id = userId;
+
   try {
     const response = await fetch("http://localhost:5001/api/contacts", {
       method: "POST",
