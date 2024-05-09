@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/main.css" />
+
+    <title>Create Contact</title>
+  </head>
+  <body>
+    <header id="main-header">
+      <nav>
+        <ul>
+          <li><button class="add-contact">Create Contact</button></li>
+          <li><a href="/views/current.html">All Contacts</a></li>
+          <li><button id="logoutButton">logout</button></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Create New Contact</h1>
+      <section id="save-contact">
+        <form action="" id="signup-form">
+          <h2>Contact Details</h2>
+
+          <div class="form-control">
+            <input type="text" id="contactName" name="contactName" required />
+            <label for="contactName">Contact Name</label>
+          </div>
+
+          <div class="form-control">
+            <input type="email" id="email" name="email" required />
+            <label for="email">Email</label>
+          </div>
+
+          <div class="form-control">
+            <input type="number" id="phone" name="phone" required />
+            <label for="phone">Phone Number</label>
+          </div>
+
+          <div class="form-control">
+            <button class="btn">Add Contact</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
