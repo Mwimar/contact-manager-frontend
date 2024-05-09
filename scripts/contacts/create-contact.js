@@ -1,32 +1,55 @@
 const createContactForm = document.querySelector("#save-contact-form");
-const token = localStorage.getItem("token");
+
+function getUserIdFromToken() {
+  const token = localStorage.getItem("token");
+  if (!token) return null;
+
+  try {
+    const decodedToken = JSON.parse(atob(token.split(".")[1])); // Decode the payload part of the JWT
+    return decodedToken.user_id; // Assuming 'user_id' is the key for user ID in the token payload
+  } catch (error) {
+    console.error("Error decoding token:", error);
+    return null;
+  }
+}
 
 async function addContact(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
-  const userData = {};
+  const contactData = {};
 
   formData.forEach((value, key) => {
-    userData[key] = value;
+    contactData[key] = value;
   });
-  let response;
+
+  const userId = getUserIdFromToken();
+  if (!userId) {
+    alert("You are Not Authenticated");
+    return;
+  }
+
   try {
-    response = await fetch("http://localhost:5001/api/contacts", {
+    const response = await fetch("http://localhost:5001/api/contacts", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(userData),
+      body: JSON.stringify(contactData),
     });
 
     if (!response.ok) {
-      console.log("No response");
+      throw new Error("Failed to save contact. Status: " + response.status);
     }
-    const userData = response;
-    console.log(userData);
+
+    const result = await response.json();
+    console.log(result);
+    alert("Contact saved successfully!");
+    window.location.href = "http://localhost:5500/views/current.html";
   } catch (error) {
-    alert("Could not save Contact");
+    console.error("Error:", error);
+    alert("Could not save contact: " + error.message);
   }
 }
+
 createContactForm.addEventListener("submit", addContact);
