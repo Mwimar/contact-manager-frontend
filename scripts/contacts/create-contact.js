@@ -63,7 +63,7 @@ async function addContact(event) {
 
     const result = await response.json();
     console.log(result);
-    alert("Contact saved successfully!");
+
     window.location.href = "http://localhost:5500/views/current.html";
   } catch (error) {
     console.error("Error:", error);
