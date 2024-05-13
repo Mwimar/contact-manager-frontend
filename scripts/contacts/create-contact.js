@@ -1,40 +1,57 @@
-const createContactForm = document.querySelector("#save-contact-form");
+const saveContactForm = document.querySelector("#save-contact-form");
 
-function getUserIdFromToken() {
+async function getUserIdFromToken() {
   const token = localStorage.getItem("token");
-  if (!token) return null;
+  if (!token) {
+    console.error("No token found in localStorage.");
+    return null;
+  }
 
   try {
-    const decodedToken = JSON.parse(atob(token.split(".")[1])); // Decode the payload part of the JWT
-    return decodedToken.user_id; // Assuming 'user_id' is the key for user ID in the token payload
+    const decodedToken = JSON.parse(atob(token.split(".")[1]));
+    return decodedToken.user.id; // Assuming 'user.id' is the key for user ID in the token payload
   } catch (error) {
     console.error("Error decoding token:", error);
     return null;
   }
 }
 
+function validateContactData(contactData) {
+  const requiredFields = ["name", "phone", "email"]; // Add all required fields here
+  for (let field of requiredFields) {
+    if (!contactData[field]) {
+      alert(`Please fill out the ${field} field.`);
+      return false;
+    }
+  }
+  return true;
+}
+
 async function addContact(event) {
   event.preventDefault();
-  const formData = new FormData(event.target);
-  const contactData = {};
+
+  const userId = await getUserIdFromToken();
+  if (!userId) {
+    alert("You are not authenticated. Please log in.");
+    return;
+  }
+
+  const formData = new FormData(saveContactForm);
+  const contactData = { user_id: userId };
 
   formData.forEach((value, key) => {
     contactData[key] = value;
   });
 
-  const userId = getUserIdFromToken();
-  if (!userId) {
-    alert("You are Not Authenticated");
-    return;
+  if (!validateContactData(contactData)) {
+    return; // Stop the function if validation fails
   }
-
-  contactData.user_id = userId;
 
   try {
     const response = await fetch("http://localhost:5001/api/contacts", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(contactData),
@@ -50,8 +67,11 @@ async function addContact(event) {
     window.location.href = "http://localhost:5500/views/current.html";
   } catch (error) {
     console.error("Error:", error);
-    alert("Could not save contact: " + error.message);
+    response.json().then((errorDetails) => {
+      alert("Could not save contact: " + errorDetails.message);
+    });
   }
 }
 
-createContactForm.addEventListener("submit", addContact);
+// Add event listener to the form for the 'submit' event
+saveContactForm.addEventListener("submit", addContact);
