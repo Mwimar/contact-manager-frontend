@@ -35,6 +35,12 @@ async function loadContacts() {
   }
 }
 
+//edit contact function
+async function editContact() {}
+
+//delete contact function
+async function deleteContact() {}
+
 function createContactListItem(contactEmail, contactName, contactPhone) {
   const newContactListElement = document.createElement("li");
 
@@ -47,9 +53,22 @@ function createContactListItem(contactEmail, contactName, contactPhone) {
   const contactPhoneElement = document.createElement("h5");
   contactPhoneElement.textContent = contactPhone;
 
+  const editContactButtonElement = document.createElement("button");
+  editContactButtonElement.textContent = "EDIT";
+  editContactButtonElement.addEventListener("click", editContact);
+
+  const deleteContactButtonElement = document.createElement("button");
+  deleteContactButtonElement.textContent = "DELETE";
+  editContactButtonElement.addEventListener("click", deleteContact);
+  const contactActionsWrapper = document.createElement("div");
+
+  contactActionsWrapper.appendChild(editContactButtonElement);
+  contactActionsWrapper.appendChild(deleteContactButtonElement);
+
   newContactListElement.appendChild(contactEmailElement);
   newContactListElement.appendChild(contactNameElement);
   newContactListElement.appendChild(contactPhoneElement);
+  newContactListElement.appendChild(contactActionsWrapper);
 
   contactList.appendChild(newContactListElement);
 }

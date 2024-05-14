@@ -75,9 +75,4 @@ async function addContact(event) {
 
 // Add event listener to the form for the 'submit' event
 
-//edit contact function
-async function editContact() {}
-
-//delete contact function
-async function deleteContact() {}
 saveContactForm.addEventListener("submit", addContact);

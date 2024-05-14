@@ -9,8 +9,22 @@ ul{
 }
 
 #all-contacts ul li{
-    background-color: rgb(159, 218, 198);
+    background-color: rgb(144, 163, 157);
     margin:1rem 0;
     padding:1.5rem;
     border-radius:4px;
+}
+
+#all-contacts ul li button{
+    background-color:teal;
+    font: inherit;
+    cursor: cell;
+    margin: 0.5rem 0.5rem;
+    padding: 0.5rem 0.5rem;
+    border-radius: 5px;
+    border:1px solid black;
+
+}
+#all-contacts ul li button:hover{
+    background-color: transparent;
 }
