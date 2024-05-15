@@ -55,11 +55,13 @@ function createContactListItem(contactEmail, contactName, contactPhone) {
 
   const editContactButtonElement = document.createElement("button");
   editContactButtonElement.textContent = "EDIT";
+  editContactButtonElement.classList.add("edit-button");
   editContactButtonElement.addEventListener("click", editContact);
 
   const deleteContactButtonElement = document.createElement("button");
   deleteContactButtonElement.textContent = "DELETE";
-  editContactButtonElement.addEventListener("click", deleteContact);
+  deleteContactButtonElement.classList.add("delete-contact");
+  deleteContactButtonElement.addEventListener("click", deleteContact);
   const contactActionsWrapper = document.createElement("div");
 
   contactActionsWrapper.appendChild(editContactButtonElement);
