@@ -36,10 +36,19 @@ async function loadContacts() {
 }
 
 //edit contact function
-async function editContact() {}
+async function editContact(event) {
+  const clickedButton = event.target;
+
+  console.log("The Clicked Button Is: ", clickedButton);
+}
 
 //delete contact function
-async function deleteContact() {}
+async function deleteContact(event) {
+  const clickedButton = event.target;
+  const contactElement = clickedButton.parentElement.parentElement;
+  const contactId = contactElement.dataset.id;
+  console.log("The Contact Id is :", contactId);
+}
 
 function createContactListItem(contactEmail, contactName, contactPhone) {
   const newContactListElement = document.createElement("li");
