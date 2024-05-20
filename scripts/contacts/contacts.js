@@ -80,7 +80,7 @@ async function editContact(event) {
   const contactElement = clickedButton.parentElement.parentElement;
   const contactId = contactElement.dataset.id;
 
-  window.location.href = `http://localhost:5500/views/update-contact.html?${contactId}`;
+  window.location.href = `http://localhost:5500/views/update-contact.html?contactId=${contactId}`;
 }
 
 async function deleteContact(event) {
