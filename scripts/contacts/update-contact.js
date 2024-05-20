@@ -1,3 +1,5 @@
+const contactName = document.querySelector("#save-contact");
+
 async function loadContact() {
   try {
     const urlParams = new URLSearchParams(window.location.search);
@@ -20,8 +22,11 @@ async function loadContact() {
 
     const contactDetails = await response.json();
     console.log("Contact Details:", contactDetails);
-    // window.location.href = `http://localhost:5500/views/update-contact.html?${contactId}`;
-    // Further logic to handle editing the contact
+
+    //populating existing User Data
+    document.getElementById("name").value = contactDetails.name;
+    document.getElementById("email").value = contactDetails.email;
+    document.getElementById("phone").value = contactDetails.phone;
   } catch (error) {
     alert("Error fetching contact details: " + error.message);
     console.log("Error Fetching Contact:", error.message);
