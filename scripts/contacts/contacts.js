@@ -87,7 +87,26 @@ async function deleteContact(event) {
   const clickedButton = event.target;
   const contactElement = clickedButton.parentElement.parentElement;
   const contactId = contactElement.dataset.id;
-  console.log("The Contact Id is :", contactId);
+
+  try {
+    const token = localStorage.getItem("token");
+    const response = await fetch(
+      `http://localhost:5001/api/contacts/${contactId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (!response.ok) {
+      console.log("Error Deleting Contact");
+    }
+  } catch (error) {
+    console.log("Could not delete Contact");
+  }
+  contactElement.remove();
 }
 
 // function createContactListItem(contactEmail, contactName, contactPhone) {
