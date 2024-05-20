@@ -33,3 +33,47 @@ async function loadContact() {
   }
 }
 loadContact();
+
+async function update(event) {
+  event.preventDefault();
+  const urlParams = new URLSearchParams(window.location.search);
+  const contactId = urlParams.get("contactId");
+  if (!contactId) {
+    throw new Error("Contact id not found in URL");
+  }
+  const formData = new FormData(event.target);
+  const userData = {};
+
+  formData.forEach((value, key) => {
+    userData[key] = value;
+  });
+
+  try {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      throw new Error("Token not found");
+    }
+
+    const response = await fetch(
+      `http://localhost:5001/api/contacts/${contactId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(userData),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to update Contact");
+    }
+    const updatedContact = await response.json();
+    alert("Contact Updated!");
+    window.location.href = "http://localhost:5500/views/current.html";
+  } catch (error) {
+    alert("Error Updating Contact");
+    console.log(error.message);
+  }
+}
